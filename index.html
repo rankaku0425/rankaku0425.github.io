@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ぽぽりん 公式サイト</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@400;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- ナビゲーション -->
+    <nav class="navbar">
+        <div class="nav-logo" data-page="home">
+            <span class="slash">/</span>ぽぽりん
+        </div>
+        <ul class="nav-links">
+            <li><a href="#" class="nav-link active" data-page="home">ホーム</a></li>
+            <li><a href="#" class="nav-link" data-page="about">概要</a></li>
+            <li><a href="#" class="nav-link" data-page="goods">グッズ情報</a></li>
+            <li><a href="#" class="nav-link" data-page="download">ダウンロード</a></li>
+            <li><a href="#" class="nav-link" data-page="terms">利用規約</a></li>
+            <li><a href="#" class="nav-link" data-page="contact">お問い合わせ</a></li>
+        </ul>
+
+        <!-- ハンバーガーボタン（モバイル用） -->
+        <button class="hamburger" id="hamburger" aria-label="メニューを開く">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </nav>
+
+    <!-- モバイルメニュー -->
+    <div class="mobile-menu" id="mobile-menu">
+        <ul>
+            <li><a href="#" class="mobile-link" data-page="home">ホーム</a></li>
+            <li><a href="#" class="mobile-link" data-page="about">概要</a></li>
+            <li><a href="#" class="mobile-link" data-page="goods">グッズ情報</a></li>
+            <li><a href="#" class="mobile-link" data-page="download">ダウンロード</a></li>
+            <li><a href="#" class="mobile-link" data-page="terms">利用規約</a></li>
+            <li><a href="#" class="mobile-link" data-page="contact">お問い合わせ</a></li>
+        </ul>
+    </div>
+
+    <!-- メインコンテンツ -->
+    <main>
+
+        <!-- ホームページ -->
+        <section id="page-home" class="page active">
+            <div class="hero">
+                <div class="hero-text">
+                    <h1>ぽぽりん とは</h1>
+                    <p>
+                        ぽぽりんとはSNS「Karotter」から誕生したキャラクターです。<br>
+                        キャラクターの元はHochik1su氏が投稿した「ポポと岐阜」に由来します
+                    </p>
+                    <a href="https://karotter.com/?tab=recommended" class="btn-link" target="_blank" rel="noopener noreferrer">Karotter</a>
+                </div>
+                <div class="hero-image">
+                    <img src="スクショコピー/ぽぽりん.png" alt="ぽぽりんのイラスト">
+                </div>
+            </div>
+        </section>
+
+        <!-- 概要ページ -->
+        <section id="page-about" class="page">
+            <div class="about-container">
+
+                <div class="about-section reveal-section">
+                    <h2>ぽぽりん</h2>
+                    <hr>
+                    <p>
+                        岐阜県の穂々神社に住んでいる21歳の女の子！<br>
+                        巫女さんのお仕事の片手間に歌を歌っている♪<br>
+                        体にはケモ耳と4枚の羽根が付いているよ！羽は飛ぶことはできないけど
+                    </p>
+                </div>
+
+                <div class="about-section reveal-section">
+                    <h2>ポポと岐阜</h2>
+                    <hr>
+                    <p>
+                        SNS「カロッター」でHochik1su氏によって投稿された言葉から生まれた造語！<br>
+                        ポポと岐阜が何かそれは誰も知らない...<br>
+                        関連語として露炉の犬やナナと長野などがいるよ
+                    </p>
+                </div>
+
+                <div class="about-section reveal-section">
+                    <h2>ぽぽりんUTAU化計画</h2>
+                    <hr>
+                    <p>
+                        「ぽぽりんをUTAUにしようぜ！」ということから始まった計画！<br>
+                        紆余曲折を経てなんとか形になった計画！！<br>
+                        この計画の一環としてこのHPは作成された！！！！
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- グッズ情報ページ -->
+        <section id="page-goods" class="page">
+            <div class="empty-page">
+                <h2>グッズ情報</h2>
+                <hr>
+                <p class="empty-text">準備中...</p>
+            </div>
+        </section>
+
+        <!-- ダウンロードページ -->
+        <section id="page-download" class="page">
+            <div class="empty-page">
+                <h2>ダウンロード</h2>
+                <hr>
+                <p class="empty-text">準備中...</p>
+            </div>
+        </section>
+
+        <!-- 利用規約ページ -->
+        <section id="page-terms" class="page">
+            <div class="terms-container">
+                <h2>音声利用規約</h2>
+                <hr>
+
+                <div class="terms-section reveal-section">
+                    <h3>1. 一般的な事にこんな感じだよー</h3>
+                    <ul>
+                        <li>本規約のダウンロードまたは使用をもって同意したものとみなされる。</li>
+                        <li>使用許可と著作権の所在は別の問題。音声自体の権利は開発者に帰属し、利用者に譲渡されることはありません。</li>
+                        <li>集合作品（一般人・本音声を使用した創作物）は作成・公開・頒布を認可します。</li>
+                        <li>クレジット表記は：楽曲公開時の概要、動画の説明欄等のクレジット等に「ぽぽりん」と記載することが推奨されます。</li>
+                        <li>規約違反の場合の処罰について保証はできますが、状況によっては利用していた活動の一切の責任を負います。</li>
+                        <li>準拠法：本規約は日本法に基づき解釈されます。</li>
+                        <li>訴訟と裁判の前に話し合いを推奨します。問題がある場合はお問い合わせから連絡をとり、友好的な解決を行う機会を設けてあります。</li>
+                    </ul>
+                </div>
+
+                <div class="terms-section reveal-section">
+                    <h3>2. 改変および別利用について</h3>
+                    <ul>
+                        <li>改変および別利用/利用人的な追加に加えて、以下の形での改変が別途推奨されているよー</li>
+                        <li>これらの改変は商業プラットフォームでの広告改変も（パートナープログラム）よーい</li>
+                        <li>Spotify/Apple Musicを含む全ての音楽系サービスへの投稿、その他、創作的な作品の二次創作改変に使用可能です。</li>
+                    </ul>
+                </div>
+
+                <div class="terms-section reveal-section">
+                    <h3>3. 禁止事項</h3>
+                    <ul>
+                        <li>データの改変・移転・無断配布は禁止します。</li>
+                        <li>違法なコンテンツへの使用は禁止します。</li>
+                        <li>違法なコンテンツ・過激な政治的プロパガンダ、違法、政治的な方法で生成された内容の使用は禁止します。</li>
+                    </ul>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- お問い合わせページ -->
+        <section id="page-contact" class="page">
+            <div class="empty-page">
+                <h2>お問い合わせ</h2>
+                <hr>
+                <p class="empty-text">準備中...</p>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
