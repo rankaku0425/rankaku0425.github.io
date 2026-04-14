@@ -551,6 +551,26 @@ main {
     color: var(--orange);
 }
 
+.terms-label {
+    font-weight: 700;
+    color: #1a1a1a;
+}
+
+.terms-desc {
+    font-size: 13px;
+    color: #666;
+    margin-bottom: 14px;
+    padding-left: 4px;
+}
+
+.terms-note {
+    display: block;
+    font-size: 12px;
+    color: #888;
+    margin-top: 6px;
+    padding-left: 1em;
+}
+
 /* ===========================
    レスポンシブ — タブレット・スマホ（768px以下）
 =========================== */
