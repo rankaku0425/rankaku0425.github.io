@@ -19,6 +19,7 @@
 
 html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
 }
 
 body {
@@ -27,6 +28,7 @@ body {
     color: #1a1a1a;
     line-height: 1.7;
     font-size: 15px;
+    overflow-x: hidden;
 }
 
 /* ===========================
@@ -259,6 +261,7 @@ main {
     margin: 0 auto;
     padding: 60px 48px 40px;
     min-height: calc(100vh - 56px);
+    min-height: calc(100dvh - 56px); /* iOS Safari対応 */
     gap: 40px;
 }
 
@@ -549,9 +552,11 @@ main {
 }
 
 /* ===========================
-   レスポンシブ
+   レスポンシブ — タブレット・スマホ（768px以下）
 =========================== */
 @media (max-width: 768px) {
+
+    /* ナビ */
     .navbar {
         padding: 0 20px;
     }
@@ -562,13 +567,16 @@ main {
 
     .hamburger {
         display: flex;
+        padding: 8px; /* タップ領域を広く */
     }
 
+    /* ホーム */
     .hero {
         flex-direction: column-reverse;
-        padding: 32px 24px 48px;
+        padding: 28px 20px 40px;
         min-height: auto;
-        gap: 24px;
+        gap: 16px;
+        text-align: center;
     }
 
     .hero-text {
@@ -577,25 +585,108 @@ main {
     }
 
     .hero-text h1 {
-        font-size: 38px;
+        font-size: 36px;
+    }
+
+    .hero-text p {
+        font-size: 13.5px;
     }
 
     .hero-image {
-        max-width: 280px;
+        max-width: 240px;
+        margin: 0 auto;
     }
 
     .hero-image img {
-        max-width: 260px;
+        max-width: 220px;
     }
 
-    .about-container,
+    .btn-link {
+        padding: 10px 28px; /* タップ領域を広く */
+        font-size: 15px;
+    }
+
+    /* 概要：ネガティブマージンをモバイル用に修正 */
+    .about-container {
+        padding: 0 0 48px;
+        max-width: 100%;
+    }
+
+    .about-section {
+        margin-left: 0;
+        margin-right: 0;
+        padding: 36px 20px;
+    }
+
+    .about-section h2 {
+        font-size: 34px;
+    }
+
+    .about-section p {
+        font-size: 13.5px;
+    }
+
+    /* 空白ページ */
     .empty-page {
-        padding: 40px 24px 60px;
+        padding: 40px 20px 60px;
+    }
+
+    .empty-page h2 {
+        font-size: 34px;
+    }
+
+    /* 利用規約 */
+    .terms-container {
+        padding: 40px 20px 60px;
+    }
+
+    .terms-container > h2 {
+        font-size: 34px;
+    }
+
+    .terms-section h3 {
+        font-size: 15px;
+    }
+
+    .terms-section ul li {
+        font-size: 13.5px;
+        line-height: 1.75;
+    }
+}
+
+/* ===========================
+   レスポンシブ — 小型スマホ（480px以下）
+=========================== */
+@media (max-width: 480px) {
+
+    .hero-text h1 {
+        font-size: 28px;
+    }
+
+    .hero-text p {
+        font-size: 13px;
+    }
+
+    .hero-image {
+        max-width: 200px;
+    }
+
+    .hero-image img {
+        max-width: 180px;
     }
 
     .about-section h2,
     .empty-page h2,
     .terms-container > h2 {
-        font-size: 36px;
+        font-size: 26px;
+    }
+
+    .about-section p,
+    .terms-section ul li {
+        font-size: 13px;
+    }
+
+    .nav-logo {
+        font-size: 15px;
     }
 }
