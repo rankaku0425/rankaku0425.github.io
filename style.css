@@ -551,71 +551,111 @@ main {
     color: var(--orange);
 }
 
-/* 要約カードグリッド */
+/* ===========================
+   利用規約 要約カード
+=========================== */
 .terms-summary-lead {
     text-align: center;
     font-size: 14px;
     color: #555;
     line-height: 1.9;
-    margin-bottom: 36px;
+    margin-bottom: 40px;
 }
 
 .terms-summary-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
-    margin-bottom: 48px;
+    margin-bottom: 52px;
 }
 
+/* カード共通 */
 .terms-card {
-    background: #f8f9fc;
-    border: 1px solid #e8eaf0;
-    border-radius: 12px;
-    padding: 24px 20px;
-    transition: transform 0.2s, box-shadow 0.2s;
+    border-radius: 16px;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    display: flex;
+    flex-direction: column;
 }
 
 .terms-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 24px rgba(45, 107, 196, 0.08);
+    transform: translateY(-5px);
+    box-shadow: 0 12px 32px rgba(0,0,0,0.10);
 }
 
-.terms-card-icon {
-    font-size: 24px;
-    margin-bottom: 10px;
-}
+/* カラー定義 */
+.terms-card--ok   { --c: #22c55e; --c-light: #f0fdf4; --c-mid: rgba(34,197,94,0.15); }
+.terms-card--ng   { --c: #ef4444; --c-light: #fff5f5; --c-mid: rgba(239,68,68,0.15); }
+.terms-card--note { --c: #2d6bc4; --c-light: #eff6ff; --c-mid: rgba(45,107,196,0.15); }
 
-.terms-card h4 {
-    font-size: 14px;
-    font-weight: 800;
-    color: #1a1a1a;
-    margin-bottom: 12px;
-    padding-bottom: 8px;
-    border-bottom: 2px solid var(--grad);
-    border-image: var(--grad) 1;
-}
-
-.terms-card ul {
-    list-style: none;
-    padding: 0;
+/* ヘッダー部 */
+.terms-card-header {
+    background: var(--c-light);
+    padding: 24px 20px 20px;
     display: flex;
     flex-direction: column;
-    gap: 7px;
+    align-items: center;
+    gap: 12px;
+    border-bottom: 2px solid var(--c-mid);
+}
+
+/* アイコン円 */
+.terms-card-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: var(--c-mid);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.terms-card-icon svg {
+    width: 24px;
+    height: 24px;
+    stroke: var(--c);
+}
+
+/* タイトル */
+.terms-card h4 {
+    font-size: 15px;
+    font-weight: 800;
+    color: var(--c);
+    letter-spacing: 0.05em;
+    margin: 0;
+    border: none;
+    padding: 0;
+    border-image: none;
+    text-align: center;
+}
+
+/* リスト */
+.terms-card ul {
+    list-style: none;
+    padding: 20px 20px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex: 1;
 }
 
 .terms-card ul li {
     font-size: 13px;
     color: #444;
-    line-height: 1.6;
-    padding-left: 14px;
+    line-height: 1.65;
+    padding-left: 18px;
     position: relative;
 }
 
 .terms-card ul li::before {
-    content: '–';
+    content: '▸';
     position: absolute;
     left: 0;
-    color: #aaa;
+    color: var(--c);
+    font-size: 11px;
+    top: 2px;
 }
 
 /* ダウンロードエリア */
