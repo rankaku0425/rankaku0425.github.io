@@ -684,17 +684,19 @@ main {
     align-items: center;
     gap: 10px;
     text-decoration: none;
-    color: #ffffff;
+    color: var(--blue);
     font-weight: 700;
     font-size: 14px;
-    background: var(--grad);
+    background: #fff;
     padding: 13px 32px;
     border-radius: 6px;
-    transition: opacity 0.2s, transform 0.2s;
+    border: 2px solid var(--blue);
+    transition: background 0.2s, color 0.2s, transform 0.2s;
 }
 
 .btn-download:hover {
-    opacity: 0.85;
+    background: var(--blue);
+    color: #fff;
     transform: translateY(-2px);
 }
 
