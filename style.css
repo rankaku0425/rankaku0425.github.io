@@ -873,6 +873,132 @@ main {
 }
 
 /* ===========================
+   画像ガイドラインページ
+=========================== */
+.guideline-container {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 60px 48px 80px;
+}
+
+.guideline-container > h2 {
+    font-size: 56px;
+    font-weight: 800;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #1a1a1a;
+    letter-spacing: 0.04em;
+    line-height: 1.2;
+}
+
+.guideline-container > hr {
+    border: none;
+    height: 2px;
+    background: var(--grad);
+    width: 64px;
+    margin: 0 auto 48px;
+    position: relative;
+    overflow: visible;
+}
+
+.guideline-container > hr::before {
+    content: '◆';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 7px;
+    color: var(--orange);
+    background: #fff;
+    padding: 0 5px;
+    line-height: 1;
+}
+
+.guideline-details {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+.guideline-detail {
+    padding: 24px 28px;
+    border-radius: 10px;
+    border: 1.5px solid #e8e8e8;
+    background: #fff;
+}
+
+.guideline-detail h3 {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--blue);
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #e8e8e8;
+    letter-spacing: 0.05em;
+}
+
+.guideline-detail p {
+    font-size: 13.5px;
+    color: #444;
+    line-height: 1.85;
+}
+
+.guideline-detail p + p {
+    margin-top: 12px;
+}
+
+.guideline-r18 {
+    background: #fff8f0;
+    border-left: 3px solid var(--orange);
+    padding: 10px 14px !important;
+    border-radius: 0 4px 4px 0;
+    font-size: 13px !important;
+    color: #555 !important;
+}
+
+.guideline-detail ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.guideline-detail ul li {
+    font-size: 13.5px;
+    color: #444;
+    line-height: 1.8;
+    padding-left: 16px;
+    position: relative;
+}
+
+.guideline-detail ul li::before {
+    content: '–';
+    position: absolute;
+    left: 0;
+    color: var(--blue);
+    font-weight: 700;
+}
+
+.guideline-detail--highlight {
+    border-color: var(--blue);
+    background: #f6f9ff;
+}
+
+.guideline-detail--highlight h3 {
+    color: var(--blue);
+}
+
+.guideline-detail--muted {
+    background: #f9f9f9;
+}
+
+.guideline-detail--muted h3 {
+    color: #666;
+}
+
+/* ===========================
    レスポンシブ — タブレット・スマホ（768px以下）
 =========================== */
 @media (max-width: 768px) {
@@ -993,6 +1119,20 @@ main {
         font-size: 34px;
     }
 
+    /* 画像ガイドライン */
+    .guideline-container {
+        padding: 40px 20px 60px;
+    }
+
+    .guideline-container > h2 {
+        font-size: 34px;
+    }
+
+    .guideline-details {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+
     .terms-section h3 {
         font-size: 15px;
     }
@@ -1027,7 +1167,8 @@ main {
     .about-section h2,
     .empty-page h2,
     .contact-page h2,
-    .terms-container > h2 {
+    .terms-container > h2,
+    .guideline-container > h2 {
         font-size: 26px;
     }
 

@@ -1,7 +1,7 @@
 // ===========================
 //  ページ順序
 // ===========================
-const pageOrder = ['home', 'about', 'goods', 'download', 'terms', 'contact'];
+const pageOrder = ['home', 'about', 'goods', 'download', 'terms', 'guidelines', 'contact'];
 
 // ===========================
 //  セクション reveal アニメーション
