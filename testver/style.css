@@ -731,6 +731,13 @@ main { padding-top: var(--nav-h); }
     pointer-events: none;
 }
 
+/* orange（flip）の画像は左側に配置 */
+.chapter__accent--orange .chapter__accent-img {
+    right: auto;
+    left: -8px;
+    filter: drop-shadow(6px 0 18px rgba(240, 160, 48, 0.18));
+}
+
 /* Flip: アクセントを左・本文を右に */
 .chapter--flip .chapter__body   { order: 2; }
 .chapter--flip .chapter__accent { order: 1; }
@@ -1454,7 +1461,7 @@ main { padding-top: var(--nav-h); }
     }
 
     .kv__copy-title { font-size: 2.8rem; }
-    .kv__scroll { display: none; }
+    .kv__scroll { display: flex; left: 20px; bottom: 20px; }
 
     /* スワイプヒント */
     .kv__swipe-hint {
@@ -1474,9 +1481,7 @@ main { padding-top: var(--nav-h); }
         border-radius: 12px;
         color: var(--p-blue);
         opacity: 0;
-        animation:
-            swipeHintIn  0.5s cubic-bezier(0.22, 1, 0.36, 1) 2.0s forwards,
-            swipeHintOut 0.5s ease 5.5s forwards;
+        animation: swipeHintIn 0.5s cubic-bezier(0.22, 1, 0.36, 1) 2.0s forwards;
     }
 
     .kv__swipe-hint-arrows {
@@ -1504,11 +1509,6 @@ main { padding-top: var(--nav-h); }
     @keyframes swipeHintIn {
         from { opacity: 0; transform: translateX(10px); }
         to   { opacity: 1; transform: translateX(0); }
-    }
-
-    @keyframes swipeHintOut {
-        from { opacity: 1; }
-        to   { opacity: 0; }
     }
 
     @keyframes swipeChevron {
@@ -1624,6 +1624,11 @@ main { padding-top: var(--nav-h); }
         bottom: auto;
         transform: none;
         filter: drop-shadow(0 -6px 24px rgba(45, 107, 196, 0.16));
+    }
+
+    .chapter__accent--orange .chapter__accent-img {
+        filter: drop-shadow(0 -6px 24px rgba(240, 160, 48, 0.18));
+        left: auto;
     }
 
     /* === TERMS & GUIDELINES === */
