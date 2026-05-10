@@ -715,9 +715,28 @@ main { padding-top: var(--nav-h); }
     right: auto; left: 10px;
 }
 
-/* Chapter 1: キャラクター画像入りアクセントパネル */
+/* 画像入りアクセントパネル共通 */
 .chapter__accent--img {
     width: 280px;
+    clip-path: none;
+    overflow: hidden;
+}
+
+/* 左三角オーバーレイ（Chapter 1・3） */
+.chapter__accent--img::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    clip-path: polygon(0 0, 22% 0, 0 100%);
+    background: rgba(232, 240, 253, 0.95);
+    z-index: 2;
+    pointer-events: none;
+}
+
+/* 右三角オーバーレイ（Chapter 2） */
+.chapter__accent--orange.chapter__accent--img::after {
+    clip-path: polygon(78% 0, 100% 0, 100% 100%);
+    background: rgba(232, 240, 253, 0.95);
 }
 
 .chapter__accent-img {
@@ -729,6 +748,7 @@ main { padding-top: var(--nav-h); }
     object-fit: contain;
     filter: drop-shadow(-6px 0 18px rgba(45, 107, 196, 0.14));
     pointer-events: none;
+    z-index: 1;
 }
 
 /* orange（flip）の画像は左側に配置 */
@@ -736,6 +756,28 @@ main { padding-top: var(--nav-h); }
     right: auto;
     left: -8px;
     filter: drop-shadow(6px 0 18px rgba(240, 160, 48, 0.18));
+}
+
+/* ロゴ画像: 全体が収まるよう中央配置 */
+.chapter__accent--logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--p-blue-lt);
+}
+
+.chapter__accent--logo .chapter__accent-img {
+    position: relative;
+    z-index: 1;
+    width: 115%;
+    height: auto;
+    top: auto;
+    right: auto;
+    bottom: auto;
+    left: auto;
+    transform: none;
+    object-fit: contain;
+    filter: drop-shadow(0 4px 16px rgba(45, 107, 196, 0.16));
 }
 
 /* Flip: アクセントを左・本文を右に */
@@ -1619,6 +1661,15 @@ main { padding-top: var(--nav-h); }
     .chapter__accent--orange .chapter__accent-img {
         filter: drop-shadow(0 -6px 24px rgba(240, 160, 48, 0.18));
         left: auto;
+    }
+
+    .chapter__accent--logo .chapter__accent-img {
+        position: relative;
+        height: auto;
+        width: 60%;
+        max-height: 75%;
+        top: auto; right: auto; bottom: auto; left: auto;
+        transform: none;
     }
 
     /* === TERMS & GUIDELINES === */
