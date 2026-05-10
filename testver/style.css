@@ -1024,46 +1024,36 @@ main { padding-top: var(--nav-h); }
     display: inline-flex;
     align-items: center;
     gap: 12px;
-    padding: 16px 44px;
-    background: var(--p-grad-diag);
-    color: white;
+    padding: 15px 44px;
+    border: 2px solid var(--p-blue);
+    color: var(--p-blue);
+    background: transparent;
     text-decoration: none;
-    border-radius: 6px;
+    border-radius: 4px;
     font-weight: 800;
     font-size: 0.95rem;
-    box-shadow: 0 6px 24px rgba(45, 107, 196, 0.30);
-    transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.28s;
     position: relative;
     overflow: hidden;
+    transition: color 0.35s;
 }
 
 .dl-btn::before {
     content: '';
     position: absolute;
-    top: 0; left: -100%;
-    width: 60%; height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-    animation: shimmer 3s ease-in-out infinite;
+    inset: 0;
+    background: var(--p-blue);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.38s cubic-bezier(0.22, 1, 0.36, 1);
+    z-index: -1;
 }
-
-.dl-btn:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 36px rgba(45, 107, 196, 0.40);
-}
+.dl-btn:hover { color: white; }
+.dl-btn:hover::before { transform: scaleX(1); }
 
 .dl-btn__icon {
-    animation: bounceDown 1.6s ease-in-out infinite;
+    transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1);
 }
-
-@keyframes shimmer {
-    0%   { left: -100%; }
-    100% { left: 200%; }
-}
-
-@keyframes bounceDown {
-    0%, 100% { transform: translateY(0); }
-    50%       { transform: translateY(5px); }
-}
+.dl-btn:hover .dl-btn__icon { transform: translateY(3px); }
 
 /* ガイドライン詳細カード — エディトリアルスタイル */
 .gl-details {
