@@ -886,6 +886,111 @@ main { padding-top: var(--nav-h); }
 }
 
 /* ===================================================
+   DOWNLOAD PAGE
+   =================================================== */
+.scene-download {
+    background: var(--p-bg);
+    padding: 64px 40px 80px;
+}
+
+.scene-download.active { display: block; }
+
+.dl-page-wrap {
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+.dl-page-note {
+    font-size: 0.9rem;
+    color: var(--p-muted);
+    margin-bottom: 40px;
+}
+
+.dl-page-note__link {
+    color: var(--p-blue);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.dl-card-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.dl-card {
+    background: var(--p-surface);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(45, 107, 196, 0.08);
+    display: flex;
+    flex-direction: column;
+    transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.dl-card:hover {
+    box-shadow: 0 6px 24px rgba(45, 107, 196, 0.16);
+    transform: translateY(-3px);
+}
+
+.dl-card__thumb {
+    height: 200px;
+    background: var(--p-bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.dl-card__thumb--logo {
+    background: #eef3fb;
+}
+
+.dl-card__img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    padding: 16px;
+}
+
+.dl-card__body {
+    padding: 20px 20px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex: 1;
+}
+
+.dl-card__label {
+    font-family: var(--font-en);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    color: var(--p-blue);
+    opacity: 0.7;
+}
+
+.dl-card__name {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--p-text);
+}
+
+.dl-card__desc {
+    font-size: 0.82rem;
+    color: var(--p-muted);
+    margin-bottom: 10px;
+}
+
+.dl-card .dl-btn {
+    margin-top: auto;
+    width: 100%;
+    justify-content: center;
+    font-size: 0.9rem;
+    padding: 10px 16px;
+}
+
+/* ===================================================
    SCENE HEADER（利用規約・ガイドライン共通）
    =================================================== */
 .scene-header { margin-bottom: 28px; }
@@ -1672,6 +1777,11 @@ main { padding-top: var(--nav-h); }
         transform: none;
     }
 
+    /* === DOWNLOAD === */
+    .scene-download { padding: 40px 20px 56px; }
+    .dl-card-grid { grid-template-columns: 1fr; gap: 16px; }
+    .dl-card__thumb { height: 180px; }
+
     /* === TERMS & GUIDELINES === */
     .scene-terms, .scene-guidelines { padding: 40px 20px 56px; }
     .rule-tab-btn__label { font-size: 0.7rem; }
@@ -1707,6 +1817,8 @@ main { padding-top: var(--nav-h); }
     .chapter__accent--img { height: 180px; }
 
     .scene-header__title { font-size: 1.9rem; }
+    .scene-download { padding: 32px 16px 48px; }
+    .dl-card__thumb { height: 160px; }
     .scene-terms, .scene-guidelines { padding: 32px 16px 48px; }
     .scene-contact { padding: 40px 16px 52px; }
     .contact-block__title { font-size: 1.9rem; }

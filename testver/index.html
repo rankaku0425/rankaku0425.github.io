@@ -8,7 +8,7 @@
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
     <title>ぽぽりん 公式サイト</title>
-    <link rel="stylesheet" href="style.css?v=20260510">
+    <link rel="stylesheet" href="style.css?v=20260510b">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=M+PLUS+1p:wght@400;700;800&display=swap" rel="stylesheet">
@@ -217,18 +217,66 @@
         </section>
 
         <!-- ダウンロードページ -->
-        <section id="page-download" class="scene scene-empty">
-            <div class="empty">
-                <div class="empty__watermark" aria-hidden="true">DOWNLOAD</div>
-                <svg class="empty__svg" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                    <line x1="32" y1="8" x2="32" y2="42" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
-                    <polyline points="20,30 32,42 44,30" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-                    <path d="M8 46v8a2 2 0 002 2h44a2 2 0 002-2v-8" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
-                </svg>
-                <span class="empty__en">COMING SOON</span>
-                <h2 class="empty__title">ダウンロード</h2>
-                <div class="empty__rule"></div>
-                <p class="empty__sub">準備中...</p>
+        <section id="page-download" class="scene scene-download">
+            <div class="dl-page-wrap">
+
+                <header class="scene-header appear-up">
+                    <span class="scene-header__en">IMAGE DOWNLOAD</span>
+                    <h2 class="scene-header__title">画像ダウンロード</h2>
+                    <div class="scene-header__rule"></div>
+                </header>
+
+                <p class="dl-page-note appear-up">ご利用の際は<a href="#guidelines" class="dl-page-note__link">画像ガイドライン</a>をご確認ください。</p>
+
+                <div class="dl-card-grid">
+
+                    <div class="dl-card appear-up">
+                        <div class="dl-card__thumb">
+                            <img src="../画像/ぽぽりん.png" alt="ぽぽりん" class="dl-card__img">
+                        </div>
+                        <div class="dl-card__body">
+                            <span class="dl-card__label">CHARACTER</span>
+                            <h3 class="dl-card__name">ぽぽりん</h3>
+                            <p class="dl-card__desc">背景透過 PNG（800×800px）</p>
+                            <a href="../画像/ぽぽりん.png" download="ぽぽりん.png" class="dl-btn">
+                                <span class="dl-btn__icon" aria-hidden="true">↓</span>
+                                ダウンロード
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="dl-card appear-up">
+                        <div class="dl-card__thumb dl-card__thumb--illust">
+                            <img src="../画像/ポポと岐阜.png" alt="ポポと岐阜" class="dl-card__img">
+                        </div>
+                        <div class="dl-card__body">
+                            <span class="dl-card__label">ILLUSTRATION</span>
+                            <h3 class="dl-card__name">ポポと岐阜</h3>
+                            <p class="dl-card__desc">背景透過 PNG（546×647px）</p>
+                            <a href="../画像/ポポと岐阜.png" download="ポポと岐阜.png" class="dl-btn">
+                                <span class="dl-btn__icon" aria-hidden="true">↓</span>
+                                ダウンロード
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="dl-card appear-up">
+                        <div class="dl-card__thumb dl-card__thumb--logo">
+                            <img src="../画像/ぽぽりんロゴ透過.png" alt="ぽぽりんロゴ" class="dl-card__img">
+                        </div>
+                        <div class="dl-card__body">
+                            <span class="dl-card__label">LOGO</span>
+                            <h3 class="dl-card__name">ぽぽりんロゴ</h3>
+                            <p class="dl-card__desc">背景透過 PNG（1500×500px）</p>
+                            <a href="../画像/ぽぽりんロゴ透過.png" download="ぽぽりんロゴ透過.png" class="dl-btn">
+                                <span class="dl-btn__icon" aria-hidden="true">↓</span>
+                                ダウンロード
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+
             </div>
         </section>
 
@@ -457,6 +505,6 @@
         <span class="kv-footer__copy">総責任者 / Hochik1su &nbsp;|&nbsp; ぽぽりん 公式サイト</span>
     </footer>
 
-    <script src="script.js?v=20260510"></script>
+    <script src="script.js?v=20260510b"></script>
 </body>
 </html>

@@ -101,6 +101,17 @@ document.querySelector('.kv-nav__logo').addEventListener('click', () => {
     switchPage('home');
 });
 
+// ページ内リンク（#guidelines など）
+document.querySelectorAll('a[href^="#"]').forEach(link => {
+    const page = link.getAttribute('href').slice(1);
+    if (pageOrder.includes(page)) {
+        link.addEventListener('click', e => {
+            e.preventDefault();
+            switchPage(page);
+        });
+    }
+});
+
 // ===================================================
 // 全画面モバイルメニュー
 // ===================================================
