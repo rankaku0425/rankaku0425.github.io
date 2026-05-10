@@ -163,6 +163,13 @@ document.addEventListener('touchend', e => {
     // 水平スワイプのみ（横移動 > 縦移動 × 1.5、かつ60px以上）
     if (Math.abs(dx) < Math.abs(dy) * 1.5 || Math.abs(dx) < 60) return;
 
+    // スワイプヒントを即時フェードアウト
+    const swipeHint = document.querySelector('.kv__swipe-hint');
+    if (swipeHint) {
+        swipeHint.style.transition = 'opacity 0.4s';
+        swipeHint.style.opacity = '0';
+    }
+
     const activeScene = document.querySelector('.scene.active');
     if (!activeScene) return;
 
