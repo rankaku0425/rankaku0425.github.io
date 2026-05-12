@@ -912,6 +912,52 @@ main { padding-top: var(--nav-h); }
     text-underline-offset: 3px;
 }
 
+.dl-voice-wait {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    padding: 48px 24px;
+    background: var(--p-surface);
+    border-radius: 16px;
+    border: 1.5px dashed rgba(45, 107, 196, 0.25);
+    margin-bottom: 48px;
+    text-align: center;
+}
+
+.dl-voice-wait__icon {
+    color: var(--p-blue);
+    opacity: 0.5;
+    width: 48px;
+    height: 48px;
+}
+
+.dl-voice-wait__icon svg {
+    width: 100%;
+    height: 100%;
+}
+
+.dl-voice-wait__title {
+    font-family: var(--font-en);
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: var(--p-blue);
+}
+
+.dl-voice-wait__text {
+    font-size: 0.92rem;
+    color: var(--p-muted);
+    line-height: 1.8;
+}
+
+.dl-section-sep {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(45, 107, 196, 0.2) 20%, rgba(240, 160, 48, 0.2) 80%, transparent);
+    margin-bottom: 48px;
+}
+
 .dl-card-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
