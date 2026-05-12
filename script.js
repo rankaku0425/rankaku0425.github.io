@@ -1,135 +1,161 @@
-// ===========================
-//  ページ順序
-// ===========================
+'use strict';
+
+// ===================================================
+// ページ順序
+// ===================================================
 const pageOrder = ['home', 'about', 'goods', 'download', 'terms', 'guidelines', 'contact'];
 
-// ===========================
-//  セクション reveal アニメーション
-// ===========================
+// ===================================================
+// セクション reveal アニメーション
+// ===================================================
 function animateSections(pageId) {
     const page = document.getElementById('page-' + pageId);
     if (!page) return;
-    const sections = page.querySelectorAll('.reveal-section');
-    sections.forEach(el => el.classList.remove('revealed'));
-    sections.forEach((el, i) => {
+
+    const targets = page.querySelectorAll('.appear-up');
+    targets.forEach(el => el.classList.remove('revealed'));
+
+    targets.forEach((el, i) => {
         setTimeout(() => el.classList.add('revealed'), 150 + i * 130);
     });
 }
 
-// ===========================
-//  ページ切り替え
-// ===========================
+// ===================================================
+// ページ切り替え
+// ===================================================
 function switchPage(targetPage, updateHash = true) {
-    const currentActive = document.querySelector('.page.active');
-    const currentName   = currentActive?.id.replace('page-', '') ?? 'home';
-    const currentIdx    = pageOrder.indexOf(currentName);
-    const targetIdx     = pageOrder.indexOf(targetPage);
-    const dir           = targetIdx >= currentIdx ? 'right' : 'left';
+    const currentActive = document.querySelector('.scene.active');
+    const targetEl = document.getElementById('page-' + targetPage);
 
-    if (currentActive?.id === 'page-' + targetPage) return;
+    if (!targetEl || currentActive === targetEl) return;
 
-    const showTarget = () => {
-        const target = document.getElementById('page-' + targetPage);
-        if (!target) return;
-        target.dataset.dir = dir;
-        target.classList.add('active');
-        animateSections(targetPage);
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    };
-
+    // 現在のページをフェードアウト
     if (currentActive) {
-        currentActive.classList.add('page-exit');
+        currentActive.classList.add('scene-exit');
         setTimeout(() => {
-            currentActive.classList.remove('active', 'page-exit');
-            showTarget();
-        }, 160);
-    } else {
-        showTarget();
+            currentActive.classList.remove('active', 'scene-exit');
+        }, 180);
     }
 
-    // ナビのアクティブ状態を更新
-    document.querySelectorAll('.nav-link, .mobile-link').forEach(link => {
+    // 新ページをフェードイン
+    setTimeout(() => {
+        targetEl.classList.add('active');
+        animateSections(targetPage);
+        window.scrollTo({ top: 0, behavior: 'instant' });
+    }, 180);
+
+    // ナビゲーションのアクティブ状態を更新
+    document.querySelectorAll('.kv-nav__item, .fmenu-link').forEach(link => {
         link.classList.toggle('active', link.dataset.page === targetPage);
     });
 
     // URLハッシュ更新
-    if (updateHash) history.pushState(null, '', '#' + targetPage);
-}
-
-// ===========================
-//  初期表示（URLハッシュ対応）
-// ===========================
-const initialPage = window.location.hash.slice(1);
-if (initialPage && pageOrder.includes(initialPage)) {
-    document.querySelector('.page.active')?.classList.remove('active');
-    const initTarget = document.getElementById('page-' + initialPage);
-    if (initTarget) {
-        initTarget.dataset.dir = 'right';
-        initTarget.classList.add('active');
+    if (updateHash) {
+        const hash = targetPage === 'home' ? location.pathname : '#' + targetPage;
+        history.pushState(null, '', hash);
     }
-    document.querySelectorAll('.nav-link, .mobile-link').forEach(link => {
-        link.classList.toggle('active', link.dataset.page === initialPage);
-    });
 }
 
-// 初期ページのセクションもアニメーション
-const activePage = document.querySelector('.page.active');
-if (activePage) animateSections(activePage.id.replace('page-', ''));
+// ===================================================
+// 初期ページ（URLハッシュ対応）
+// ===================================================
+(function initPage() {
+    const hash = location.hash.slice(1);
+    const startPage = pageOrder.includes(hash) ? hash : 'home';
 
-// ブラウザ 戻る/進む 対応
+    if (startPage !== 'home') {
+        const homeEl = document.getElementById('page-home');
+        if (homeEl) homeEl.classList.remove('active');
+
+        const targetEl = document.getElementById('page-' + startPage);
+        if (targetEl) targetEl.classList.add('active');
+
+        document.querySelectorAll('.kv-nav__item, .fmenu-link').forEach(link => {
+            link.classList.toggle('active', link.dataset.page === startPage);
+        });
+    }
+
+    animateSections(startPage);
+})();
+
+// ===================================================
+// ブラウザの戻る/進む
+// ===================================================
 window.addEventListener('popstate', () => {
-    const page = window.location.hash.slice(1) || 'home';
+    const page = location.hash.slice(1) || 'home';
     if (pageOrder.includes(page)) switchPage(page, false);
 });
 
-// ===========================
-//  ナビリンク（PC）
-// ===========================
-document.querySelectorAll('.nav-link').forEach(link => {
+// ===================================================
+// PC ナビリンク
+// ===================================================
+document.querySelectorAll('.kv-nav__item').forEach(link => {
     link.addEventListener('click', e => {
         e.preventDefault();
         switchPage(link.dataset.page);
     });
 });
 
-// ===========================
-//  ロゴクリック → ホームへ
-// ===========================
-document.querySelector('.nav-logo').addEventListener('click', () => {
+// ロゴクリック
+document.querySelector('.kv-nav__logo').addEventListener('click', () => {
     switchPage('home');
 });
 
-// ===========================
-//  モバイルメニュー
-// ===========================
-const hamburger = document.getElementById('hamburger');
-const mobileMenu = document.getElementById('mobile-menu');
-
-hamburger.addEventListener('click', () => {
-    hamburger.classList.toggle('open');
-    mobileMenu.classList.toggle('open');
+// ページ内リンク（#guidelines など）
+document.querySelectorAll('a[href^="#"]').forEach(link => {
+    const page = link.getAttribute('href').slice(1);
+    if (pageOrder.includes(page)) {
+        link.addEventListener('click', e => {
+            e.preventDefault();
+            switchPage(page);
+        });
+    }
 });
 
-document.querySelectorAll('.mobile-link').forEach(link => {
+// ===================================================
+// 全画面モバイルメニュー
+// ===================================================
+const hamburger    = document.getElementById('hamburger');
+const fullscreenMenu = document.getElementById('fullscreen-menu');
+const menuClose    = document.getElementById('menu-close');
+
+function openMenu() {
+    fullscreenMenu.classList.add('open');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeMenu() {
+    fullscreenMenu.classList.remove('open');
+    document.body.style.overflow = '';
+}
+
+hamburger.addEventListener('click', openMenu);
+menuClose.addEventListener('click', closeMenu);
+
+// Escキーで閉じる
+document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && fullscreenMenu.classList.contains('open')) closeMenu();
+});
+
+document.querySelectorAll('.fmenu-link').forEach(link => {
     link.addEventListener('click', e => {
         e.preventDefault();
         switchPage(link.dataset.page);
-        hamburger.classList.remove('open');
-        mobileMenu.classList.remove('open');
+        closeMenu();
     });
 });
 
-// ===========================
-//  ナビ スクロール影
-// ===========================
-const navbar = document.querySelector('.navbar');
+// ===================================================
+// ナビバー スクロールガラス効果
+// ===================================================
+const kvNav = document.getElementById('kv-nav');
 window.addEventListener('scroll', () => {
-    navbar.classList.toggle('scrolled', window.scrollY > 0);
-});
+    kvNav.classList.toggle('scrolled', window.scrollY > 0);
+}, { passive: true });
 
-// ===========================
-//  スワイプ対応（モバイル）
-// ===========================
+// ===================================================
+// スワイプナビゲーション（モバイル）
+// ===================================================
 let touchStartX = 0;
 let touchStartY = 0;
 
@@ -139,18 +165,71 @@ document.addEventListener('touchstart', e => {
 }, { passive: true });
 
 document.addEventListener('touchend', e => {
+    // メニューが開いている場合はスワイプ無効
+    if (fullscreenMenu.classList.contains('open')) return;
+
     const dx = e.changedTouches[0].clientX - touchStartX;
     const dy = e.changedTouches[0].clientY - touchStartY;
 
-    // 水平スワイプのみ（縦スクロールと区別）
-    if (Math.abs(dx) > Math.abs(dy) * 1.5 && Math.abs(dx) > 60) {
-        const currentName = document.querySelector('.page.active')?.id.replace('page-', '') ?? 'home';
-        const currentIdx  = pageOrder.indexOf(currentName);
+    // 水平スワイプのみ（横移動 > 縦移動 × 1.5、かつ60px以上）
+    if (Math.abs(dx) < Math.abs(dy) * 1.5 || Math.abs(dx) < 60) return;
 
-        if (dx < 0 && currentIdx < pageOrder.length - 1) {
-            switchPage(pageOrder[currentIdx + 1]); // 左スワイプ → 次ページ
-        } else if (dx > 0 && currentIdx > 0) {
-            switchPage(pageOrder[currentIdx - 1]); // 右スワイプ → 前ページ
-        }
+    // スワイプヒントを即時フェードアウト
+    const swipeHint = document.querySelector('.kv__swipe-hint');
+    if (swipeHint) {
+        swipeHint.style.transition = 'opacity 0.4s';
+        swipeHint.style.opacity = '0';
+    }
+
+    const activeScene = document.querySelector('.scene.active');
+    if (!activeScene) return;
+
+    const currentId = activeScene.id.replace('page-', '');
+    const idx = pageOrder.indexOf(currentId);
+
+    if (dx < 0 && idx < pageOrder.length - 1) {
+        switchPage(pageOrder[idx + 1]);
+    } else if (dx > 0 && idx > 0) {
+        switchPage(pageOrder[idx - 1]);
     }
 }, { passive: true });
+
+// ===================================================
+// ホームのスクロールセクション reveal（IntersectionObserver）
+// ===================================================
+const scrollRevealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('revealed');
+            scrollRevealObserver.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.15 });
+
+document.querySelectorAll('.scroll-reveal').forEach(el => {
+    scrollRevealObserver.observe(el);
+});
+
+// ===================================================
+// タブ切り替え（利用規約・ガイドライン）
+// ===================================================
+document.querySelectorAll('.rule-tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+        const tabId     = btn.dataset.tab;
+        const tabs      = btn.closest('.rule-tabs');
+        const header    = btn.closest('.rule-tabs__header');
+
+        // ボタンのアクティブ状態を切り替え
+        tabs.querySelectorAll('.rule-tab-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        // ヘッダーの data-active を更新（CSS でバー位置が変わる）
+        header.dataset.active = tabId;
+
+        // パネルを切り替え
+        tabs.querySelectorAll('.rule-tab-panel').forEach(p => p.classList.remove('active'));
+        const targetPanel = tabs.querySelector(`[data-panel="${tabId}"]`);
+        if (targetPanel) targetPanel.classList.add('active');
+    });
+});
+

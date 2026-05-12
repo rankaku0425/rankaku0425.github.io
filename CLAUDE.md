@@ -7,14 +7,14 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 UTAU音源キャラクター「ぽぽりん」の公式サイト。ビルドツール不要のバニラ HTML/CSS/JS 構成。
 GitHub Pages（`rankaku0425.github.io`）で公開されている。
 
-このリポジトリには **2つの独立したサイト** が共存している。
+このリポジトリには **2つのサイト** が共存している。
 
 | ディレクトリ | 役割 | クラス命名体系 |
 |---|---|---|
-| ルート（`/`） | 現行の公開サイト | `.navbar`, `.hero`, `.about-section` 等 |
-| `testver/` | 新デザイン（開発中） | `.kv-nav`, `.scene`, `.chapter`, `.rule-tabs` 等 |
+| ルート（`/`） | 現行の公開サイト | `.kv-nav`, `.scene`, `.chapter`, `.rule-tabs` 等 |
+| `oldver/` | 旧デザイン（アーカイブ） | `.navbar`, `.hero`, `.about-section` 等 |
 
-**2つのサイトのクラス・HTML 構造は完全に独立している。** 片方の変更がもう片方に影響することはなく、流用も禁止。
+**2つのサイトのクラス・HTML 構造は完全に独立している。**
 
 ---
 
@@ -23,22 +23,22 @@ GitHub Pages（`rankaku0425.github.io`）で公開されている。
 ```
 /
 ├── index.html              # 現行サイト（全ページを1ファイルに収録したSPA）
-├── style.css               # 現行サイトのスタイル
-├── script.js               # 現行サイトのJS
-├── 画像/                   # 共有画像アセット
-│   ├── ぽぽりん.png         # キャラクター画像（背景透過PNG）
-│   ├── ポポと岐阜.png       # 概要ページ Chapter 2 用
-│   ├── ぽぽりんロゴ透過.png  # 概要ページ Chapter 3 用（ロゴ、1500×500px）
+├── style.css               # 現行サイトのスタイル（?v=日付 でキャッシュバスト）
+├── script.js               # 現行サイトのJS（?v=日付 でキャッシュバスト）
+├── 画像/                   # 画像アセット
+│   ├── ぽぽりん.png         # キャラクター画像（背景透過PNG、800×800px）
+│   ├── ポポと岐阜.png       # 概要ページ Chapter 2 用（背景透過PNG、546×647px）
+│   ├── ぽぽりんロゴ透過.png  # 概要ページ Chapter 3 用（背景透過PNG、1500×500px）
 │   └── top.png 等
 ├── UTAU音源「ぽぽりん」利用規約.pdf
 ├── ぽぽりん画像ガイドライン.pdf
-└── testver/
-    ├── index.html          # 新デザインサイト
-    ├── style.css           # 新デザインのスタイル（?v=日付 でキャッシュバスト）
-    └── script.js           # 新デザインのJS（?v=日付 でキャッシュバスト）
+└── oldver/
+    ├── index.html          # 旧デザインサイト
+    ├── style.css           # 旧デザインのスタイル
+    └── script.js           # 旧デザインのJS
 ```
 
-`画像/` は両サイトから参照される。testver からは `../画像/` の相対パスで参照。
+`画像/` はルートから直接参照。`oldver/` からは `../画像/` の相対パスで参照。
 
 ---
 
@@ -63,40 +63,10 @@ git pull origin main --rebase && git push origin main
 ### SPA ページ管理
 
 ```javascript
-pageOrder = ['home', 'about', 'goods', 'download', 'terms', 'contact']
-```
-
-- 表示中ページ: `<section class="page active">`
-- 非表示ページ: `<section class="page">`（`display: none`）
-- `switchPage(targetPage)` で切り替え、`history.pushState` でハッシュ更新
-- `popstate` イベントでブラウザの戻る/進むに対応
-
-### スクロール reveal
-
-`.reveal-section` を持つ要素が対象。`animateSections(pageId)` が呼ばれると `revealed` クラスを 130ms 刻みのスタガーで付与する。ページ切り替えのたびにリセット→再アニメーション。
-
-### CSS 変数（現行サイト）
-
-```css
---blue:      #2d6bc4
---orange:    #f0a030
---grad:      linear-gradient(90deg, var(--blue), var(--orange))
---grad-fade: linear-gradient(90deg, transparent, var(--blue) 25%, var(--orange) 75%, transparent)
-```
-
----
-
-## testver のアーキテクチャ
-
-### SPA ページ管理
-
-```javascript
 pageOrder = ['home', 'about', 'goods', 'download', 'terms', 'guidelines', 'contact']
 ```
 
-現行サイトより `guidelines`（画像ガイドライン）が追加されている。
-
-- 表示中ページ: `<section class="scene active">`（現行の `.page` とは別クラス）
+- 表示中ページ: `<section class="scene active">`
 - 非表示ページ: `<section class="scene">`（`display: none`）
 - `.scene-empty`（グッズ・DL）のみ active 時に `display: flex` で表示
 - `switchPage()` はフェードアウト（`.scene-exit`、180ms）→フェードイン（`.scene.active`）の2段階
@@ -112,7 +82,7 @@ pageOrder = ['home', 'about', 'goods', 'download', 'terms', 'guidelines', 'conta
 
 `animateSections(pageId)` は `.appear-up` 要素を対象にする。`contact-link` など自前 `transition` を持つ要素には直接 `.appear-up` を付けず、ラッパー `<div class="appear-up">` を使う（transition 競合を防ぐため）。
 
-### CSS 変数（testver）
+### CSS 変数
 
 ```css
 --p-blue:    #2d6bc4
@@ -152,7 +122,7 @@ Chapter 3（青・右配置）: Chapter 1 と同じ三角。ロゴ画像は .cha
 
 ### キャッシュバスティング
 
-testver の CSS・JS は `?v=YYYYMMDD` クエリを付与してブラウザキャッシュを制御している。スタイルや JS を更新した際はこのバージョン番号も更新する。
+CSS・JS は `?v=YYYYMMDD` クエリを付与してブラウザキャッシュを制御している。スタイルや JS を更新した際はこのバージョン番号も更新する。
 
 ```html
 <link rel="stylesheet" href="style.css?v=20260510">
@@ -173,25 +143,14 @@ testver の CSS・JS は `?v=YYYYMMDD` クエリを付与してブラウザキ�
 
 ## ページ一覧
 
-### 現行サイト
-
-| ページID | 状態 |
-|---|---|
-| `home` | 実装済み |
-| `about` | 実装済み |
-| `goods` | 準備中 |
-| `download` | 準備中 |
-| `terms` | 実装済み |
-| `contact` | 準備中 |
-
-### testver
+### 現行サイト（ルート）
 
 | ページID | クラス | 状態 |
 |---|---|---|
 | `home` | `.scene-kv` | 実装済み（ホームにグッズ・DL スクロールセクション含む） |
 | `about` | `.scene-about` | 実装済み（Chapter 1〜3、各画像付き） |
 | `goods` | `.scene-empty` | 準備中 |
-| `download` | `.scene-empty` | 準備中 |
+| `download` | `.scene-download` | 実装済み（画像カードグリッド＋DLボタン） |
 | `terms` | `.scene-terms` | 実装済み（タブUI + PDF DL） |
 | `guidelines` | `.scene-guidelines` | 実装済み（タブUI + gl-card + PDF DL） |
 | `contact` | `.scene-contact` | 実装済み |
