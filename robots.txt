@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /oldver/
 
-Sitemap: https://rankaku0425.github.io/sitemap.xml
+Sitemap: https://poporin.net/sitemap.xml
