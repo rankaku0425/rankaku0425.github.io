@@ -1583,6 +1583,242 @@ main { padding-top: var(--nav-h); }
 }
 
 /* ===================================================
+   NOTICE BAR（ホームお知らせバナー）
+   =================================================== */
+.notice-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    padding: 18px 40px;
+    background: var(--p-grad);
+    text-decoration: none;
+    flex-wrap: wrap;
+    transition: opacity 0.2s;
+}
+
+.notice-bar:hover { opacity: 0.90; }
+
+.notice-bar__badge {
+    font-family: var(--font-en);
+    font-size: 0.65rem;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    color: var(--p-blue);
+    background: white;
+    padding: 3px 10px;
+    border-radius: 99px;
+    flex-shrink: 0;
+}
+
+.notice-bar__text {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: white;
+}
+
+.notice-bar__arrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 0.82rem;
+    font-weight: 800;
+    color: rgba(255, 255, 255, 0.85);
+    transition: gap 0.25s;
+}
+
+.notice-bar:hover .notice-bar__arrow { gap: 11px; }
+
+/* ===================================================
+   HOME SECTION — リンク追加
+   =================================================== */
+.home-section__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 18px;
+    font-size: 0.88rem;
+    font-weight: 800;
+    color: var(--p-blue);
+    text-decoration: none;
+    padding-bottom: 1px;
+    border-bottom: 2px solid transparent;
+    transition: border-color 0.25s, gap 0.25s;
+}
+
+.home-section__link:hover {
+    border-color: var(--p-blue);
+    gap: 10px;
+}
+
+/* ===================================================
+   GOODS PAGE
+   =================================================== */
+.scene-goods {
+    background: var(--p-bg);
+    padding: 64px 40px 80px;
+}
+
+.goods-wrap {
+    max-width: 880px;
+    margin: 0 auto;
+}
+
+/* カード全体：Chapter と同じ「分割レイアウト」 */
+.goods-stamp {
+    display: flex;
+    background: var(--p-surface);
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 6px 40px rgba(13, 21, 38, 0.10);
+    min-height: 380px;
+}
+
+/* ─── 左：ビジュアルパネル ─── */
+.goods-stamp__visual {
+    width: 40%;
+    flex-shrink: 0;
+    background: var(--p-blue-lt);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    /* Chapter の accent と同じ斜めカット（右端を内向きに） */
+    clip-path: polygon(0 0, 100% 0, 84% 100%, 0 100%);
+    padding: 48px 64px 48px 40px;
+}
+
+/* 淡いグラデーションオーバーレイ */
+.goods-stamp__visual::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(155deg, rgba(45, 107, 196, 0.10) 0%, rgba(240, 160, 48, 0.06) 100%);
+    pointer-events: none;
+}
+
+/* 大きな装飾数字（Chapter の accent-num と同意匠） */
+.goods-stamp__big-num {
+    font-family: var(--font-en);
+    position: absolute;
+    bottom: -16px; left: 4px;
+    font-size: 13rem;
+    font-weight: 800;
+    line-height: 1;
+    color: rgba(45, 107, 196, 0.07);
+    pointer-events: none;
+    user-select: none;
+}
+
+.goods-stamp__icon {
+    width: 210px;
+    aspect-ratio: 1 / 1;
+    background: url(画像/stamp-preview.png) center / contain no-repeat;
+    position: relative;
+    z-index: 1;
+    filter: drop-shadow(0 8px 24px rgba(13, 21, 38, 0.18));
+    pointer-events: none;
+    user-select: none;
+}
+
+/* パネル下部の英字ラベル */
+.goods-stamp__visual-en {
+    font-family: var(--font-en);
+    font-size: 0.66rem;
+    font-weight: 800;
+    letter-spacing: 0.30em;
+    color: var(--p-blue);
+    opacity: 0.60;
+    position: relative;
+    z-index: 1;
+}
+
+/* ─── 右：コンテンツパネル ─── */
+.goods-stamp__content {
+    flex: 1;
+    padding: 52px 48px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* グラデーションの NEW バッジ */
+.goods-stamp__badge {
+    font-family: var(--font-en);
+    font-size: 0.66rem;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    color: white;
+    background: var(--p-grad);
+    padding: 5px 14px;
+    border-radius: 99px;
+    display: inline-block;
+    align-self: flex-start;
+    margin-bottom: 24px;
+}
+
+.goods-stamp__name {
+    font-size: 2.4rem;
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    color: var(--p-text);
+    margin-bottom: 18px;
+}
+
+.goods-stamp__rule {
+    width: 44px; height: 3px;
+    background: var(--p-grad);
+    border-radius: 2px;
+    margin-bottom: 20px;
+}
+
+.goods-stamp__desc {
+    font-size: 0.92rem;
+    color: var(--p-muted);
+    line-height: 1.85;
+    margin-bottom: 36px;
+}
+
+.goods-stamp__btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 36px;
+    border: 2px solid var(--p-blue);
+    color: var(--p-blue);
+    background: transparent;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: 800;
+    font-size: 0.95rem;
+    align-self: flex-start;
+    position: relative;
+    overflow: hidden;
+    transition: color 0.35s;
+}
+
+.goods-stamp__btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--p-blue);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.38s cubic-bezier(0.22, 1, 0.36, 1);
+    z-index: 0;
+}
+
+.goods-stamp__btn > * { position: relative; z-index: 1; }
+.goods-stamp__btn:hover { color: white; }
+.goods-stamp__btn:hover::before { transform: scaleX(1); }
+
+.goods-stamp__btn svg { transition: transform 0.28s; }
+.goods-stamp__btn:hover svg { transform: translateX(4px); }
+
+/* ===================================================
    RESPONSIVE
    =================================================== */
 @media (max-width: 1024px) {
@@ -1846,6 +2082,27 @@ main { padding-top: var(--nav-h); }
 
     /* === FOOTER === */
     .kv-footer { padding: 16px 20px; flex-direction: column; gap: 6px; text-align: center; }
+
+    /* === NOTICE BAR === */
+    .notice-bar { gap: 12px; padding: 16px 24px; }
+    .notice-bar__arrow { display: none; }
+
+    /* === GOODS === */
+    .scene-goods { padding: 40px 20px 56px; }
+    /* 横分割 → 縦積み（上：ビジュアル帯、下：コンテンツ） */
+    .goods-stamp { flex-direction: column; min-height: auto; }
+    .goods-stamp__visual {
+        width: 100%;
+        clip-path: none;
+        height: 200px;
+        padding: 32px 24px;
+        flex-direction: row;
+        gap: 24px;
+    }
+    .goods-stamp__big-num { font-size: 9rem; bottom: -12px; left: 4px; }
+    .goods-stamp__icon { width: 150px; }
+    .goods-stamp__content { padding: 36px 28px 44px; }
+    .goods-stamp__name { font-size: 1.8rem; }
 }
 
 @media (max-width: 480px) {
@@ -1872,4 +2129,11 @@ main { padding-top: var(--nav-h); }
     .rule-tab-btn__sym { font-size: 1.5rem; }
     .home-section__title { font-size: 1.7rem; }
     .home-section, .home-section--alt { padding: 32px 20px; }
+
+    /* === GOODS（480px） === */
+    .goods-stamp__visual { height: 172px; gap: 16px; }
+    .goods-stamp__icon { width: 120px; }
+    .goods-stamp__content { padding: 28px 20px 36px; }
+    .goods-stamp__name { font-size: 1.6rem; }
+    .goods-stamp__btn { align-self: stretch; justify-content: center; padding: 13px 24px; }
 }

@@ -18,7 +18,7 @@
     <meta name="twitter:title" content="ぽぽりん 公式サイト">
     <meta name="twitter:description" content="岐阜県の穂々神社に住む巫女さんキャラクター「ぽぽりん」の公式サイト！音源配布・画像ダウンロード・利用規約など盛りだくさん♪">
     <meta name="twitter:image" content="https://poporin.net/画像/ぽぽりんロゴ透過.png">
-    <link rel="stylesheet" href="style.css?v=20260512">
+    <link rel="stylesheet" href="style.css?v=20260723">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=M+PLUS+1p:wght@400;700;800&display=swap" rel="stylesheet">
@@ -106,6 +106,16 @@
                 </div>
             </div>
 
+            <!-- お知らせバナー -->
+            <a href="#goods" class="notice-bar scroll-reveal">
+                <span class="notice-bar__badge">NEW</span>
+                <span class="notice-bar__text">ぽぽりんのLINEスタンプが発売されました！</span>
+                <span class="notice-bar__arrow" aria-hidden="true">
+                    グッズページを見る
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </span>
+            </a>
+
             <!-- ホームスクロールセクション -->
             <div class="home-sections">
 
@@ -114,10 +124,14 @@
                         <span class="home-section__num" aria-hidden="true">03</span>
                     </div>
                     <div class="home-section__body">
-                        <span class="home-section__en">COMING SOON</span>
+                        <span class="home-section__en">NOW ON SALE</span>
                         <h2 class="home-section__title">グッズ情報</h2>
                         <div class="home-section__rule"></div>
-                        <p class="home-section__text">ぽぽりんグッズの情報はこちらで公開予定です。お楽しみに！</p>
+                        <p class="home-section__text">ぽぽりんのLINEスタンプが発売中！LINEストアよりご購入いただけます。</p>
+                        <a href="#goods" class="home-section__link">
+                            グッズページを見る
+                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        </a>
                     </div>
                     <svg class="home-section__icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                         <rect x="8" y="24" width="48" height="32" rx="3" stroke="currentColor" stroke-width="2.5"/>
@@ -210,19 +224,41 @@
         </section>
 
         <!-- グッズ情報ページ -->
-        <section id="page-goods" class="scene scene-empty">
-            <div class="empty">
-                <div class="empty__watermark" aria-hidden="true">GOODS</div>
-                <svg class="empty__svg" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                    <rect x="8" y="24" width="48" height="32" rx="3" stroke="currentColor" stroke-width="2.5"/>
-                    <rect x="4" y="16" width="56" height="10" rx="2" stroke="currentColor" stroke-width="2.5"/>
-                    <line x1="32" y1="16" x2="32" y2="56" stroke="currentColor" stroke-width="2.5"/>
-                    <path d="M32 16C32 16 26 6 20 10C14 14 22 16 32 16C32 16 38 6 44 10C50 14 42 16 32 16Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
-                </svg>
-                <span class="empty__en">COMING SOON</span>
-                <h2 class="empty__title">グッズ情報</h2>
-                <div class="empty__rule"></div>
-                <p class="empty__sub">準備中...</p>
+        <section id="page-goods" class="scene scene-goods">
+            <div class="goods-wrap">
+
+                <header class="scene-header appear-up">
+                    <span class="scene-header__en">GOODS</span>
+                    <h2 class="scene-header__title">グッズ情報</h2>
+                    <div class="scene-header__rule"></div>
+                </header>
+
+                <div class="goods-stamp appear-up">
+
+                    <!-- 左：ビジュアルパネル（斜めカット） -->
+                    <div class="goods-stamp__visual">
+                        <span class="goods-stamp__big-num" aria-hidden="true">01</span>
+                        <div class="goods-stamp__icon" role="img" aria-label="ぽぽりん LINEスタンプ"></div>
+                        <span class="goods-stamp__visual-en">LINE STICKERS</span>
+                    </div>
+
+                    <!-- 右：コンテンツ -->
+                    <div class="goods-stamp__content">
+                        <span class="goods-stamp__badge">NEW RELEASE</span>
+                        <h3 class="goods-stamp__name">ぽぽりん LINEスタンプ</h3>
+                        <div class="goods-stamp__rule"></div>
+                        <p class="goods-stamp__desc">
+                            ぽぽりんのLINEスタンプがついに登場！<br>
+                            いつものトークをぽぽりんと一緒に盛り上げよう♪
+                        </p>
+                        <a href="https://store.line.me/stickershop/product/35299947" class="goods-stamp__btn" target="_blank" rel="noopener noreferrer">
+                            <span>LINEストアで購入する</span>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        </a>
+                    </div>
+
+                </div>
+
             </div>
         </section>
 
@@ -537,6 +573,6 @@
         <span class="kv-footer__copy">総責任者 / Hochik1su &nbsp;|&nbsp; ぽぽりん 公式サイト</span>
     </footer>
 
-    <script src="script.js?v=20260512"></script>
+    <script src="script.js?v=20260723"></script>
 </body>
 </html>
